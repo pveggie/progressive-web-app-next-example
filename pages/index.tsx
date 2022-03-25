@@ -7,9 +7,12 @@ export default function Home() {
   const router = useRouter()
 
   useEffect(() => {
-    if (window && window.navigator.standalone) {
+    console.log(window.navigator)
+    if (window && window.navigator && 'standalone' in window.navigator && window.navigator.standalone) {
+      console.log('is ios')
       router.push('/pwa/')
     } else {
+      console.log('not ios')
       setIsRedirect(false)
     }
   }, [])
