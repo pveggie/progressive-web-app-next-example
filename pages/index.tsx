@@ -8,16 +8,17 @@ export default function Home() {
   const router = useRouter()
 
   useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search)
-    console.log(window.location.search)
-    console.log(searchParams)
-    if (searchParams && searchParams.get('source') === 'pwa') {
-      console.log('is pwa')
-      router.push('/pwa/')
-    } else {
-      console.log('not pwa')
-      setIsWebAppDetected(false)
-    }
+    router.push('/pwa/')
+    // const searchParams = new URLSearchParams(window.location.search)
+    // console.log(window.location.search)
+    // console.log(searchParams)
+    // if (searchParams && searchParams.get('source') === 'pwa') {
+    //   console.log('is pwa')
+    //   router.push('/pwa/')
+    // } else {
+    //   console.log('not pwa')
+    //   setIsWebAppDetected(false)
+    // }
   }, [])
 
   if (isWebAppDetected === null) {
