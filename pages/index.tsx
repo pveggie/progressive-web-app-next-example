@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
-  const isRedirect = null
+  const [isRedirect, setIsRedirect] = useState(null)
   const router = useRouter()
 
   useEffect(() => {
