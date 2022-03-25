@@ -4,21 +4,23 @@ import { useRouter } from 'next/router'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
-  const [isRedirect, setIsRedirect] = useState(null)
+  const [isWebAppDetected, setIsWebAppDetected] = useState(null)
   const router = useRouter()
 
   useEffect(() => {
-    console.log(window.navigator)
-    if (window && window.navigator && 'standalone' in window.navigator && window.navigator.standalone) {
-      console.log('is ios')
+    const searchParams = new URLSearchParams(window.location.search)
+    console.log(window.location.search)
+    console.log(searchParams)
+    if (searchParams && searchParams.get('source') === 'pwa') {
+      console.log('is pwa')
       router.push('/pwa/')
     } else {
-      console.log('not ios')
-      setIsRedirect(false)
+      console.log('not pwa')
+      setIsWebAppDetected(false)
     }
   }, [])
 
-  if (isRedirect === null) {
+  if (isWebAppDetected === null) {
     return null
   }
 
