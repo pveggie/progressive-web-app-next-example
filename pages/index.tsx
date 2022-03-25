@@ -1,6 +1,23 @@
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  const isRedirect = null
+  const router = useRouter()
+
+  useEffect(() => {
+    if (window && window.navigator.standalone) {
+      router.push('/pwa/')
+    } else {
+      setIsRedirect(false)
+    }
+  }, [])
+
+  if (isRedirect === null) {
+    return null
+  }
+
   return (
     <div className={styles.container}>
       <main className={styles.main}>
