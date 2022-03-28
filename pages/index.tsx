@@ -6,9 +6,19 @@ import styles from '../styles/Home.module.css'
 export default function Home() {
   const [isWebAppDetected, setIsWebAppDetected] = useState(null)
   const router = useRouter()
+  
 
   useEffect(() => {
-    router.push('/pwa/')
+    const path = router.pathname
+    const isPwaPath = router.asPath.includes('source=pwa')
+    const isIosPw = !!window.navigator.standalone
+    const isPwa = isPwaPath || isIosPwa
+    const isPwaRoot = isPwa && path === '/'
+    if (isPwaRoot) {
+      router.push('/pwa/')
+    }    
+
+    // router.push('/pwa/')
     // const searchParams = new URLSearchParams(window.location.search)
     // console.log(window.location.search)
     // console.log(searchParams)
