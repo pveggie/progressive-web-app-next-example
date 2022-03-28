@@ -11,7 +11,7 @@ export default function Home() {
   useEffect(() => {
     const path = router.pathname
     const isPwaPath = router.asPath.includes('source=pwa')
-    const isIosPw = !!window.navigator.standalone
+    const isIosPwa = !!window.navigator.standalone
     const isPwa = isPwaPath || isIosPwa
     const isPwaRoot = isPwa && path === '/'
     if (isPwaRoot) {
