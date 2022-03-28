@@ -7,28 +7,18 @@ export default function Home() {
   const [isWebAppDetected, setIsWebAppDetected] = useState(null)
   const router = useRouter()
   
-
   useEffect(() => {
     const path = router.pathname
     const isPwaPath = router.asPath.includes('source=pwa')
     const isIosPwa = !!window.navigator.standalone
     const isPwa = isPwaPath || isIosPwa
-    const isPwaRoot = isPwa && path === '/'
+    const isPwaRoot = isPwaPath && path === '/'
     if (isPwaRoot) {
       router.push('/pwa/')
-    }    
-
-    // router.push('/pwa/')
-    // const searchParams = new URLSearchParams(window.location.search)
-    // console.log(window.location.search)
-    // console.log(searchParams)
-    // if (searchParams && searchParams.get('source') === 'pwa') {
-    //   console.log('is pwa')
-    //   router.push('/pwa/')
-    // } else {
-    //   console.log('not pwa')
-    //   setIsWebAppDetected(false)
-    // }
+    } else {
+      console.log('not pwa')
+      setIsWebAppDetected(false)
+    }
   }, [])
 
   if (isWebAppDetected === null) {
