@@ -6,7 +6,7 @@ import styles from '../styles/Home.module.css'
 export default function Home() {
   const [isWebAppDetected, setIsWebAppDetected] = useState(null)
   const router = useRouter()
-  
+
   useEffect(() => {
     const path = router.pathname
     const isPwaPath = router.asPath.includes('source=pwa')
