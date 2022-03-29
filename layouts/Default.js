@@ -20,7 +20,7 @@ const DefaultLayout = ({ children }) => {
   return (
     <>
       <Head>
-        <title>Test tile</title>
+        <title>Test title</title>
       </Head>
       <>
         {children}
